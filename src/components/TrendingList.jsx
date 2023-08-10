@@ -1,14 +1,8 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import {Link, useLocation} from 'react-router-dom';
 
-const TrendingList = () => {
-     const [movies, setMovies] = useState([
-          'movie-1',
-          'movie-2',
-          'movie-3',
-          'movie-4',
-          'movie-5'
-     ]);
+const TrendingList = ({movies}) => {
+
      const location = useLocation();
          //   useEffect(() => {
      //      HTTP request make, if you need
