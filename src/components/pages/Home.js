@@ -5,7 +5,8 @@ const Home = () =>{
      //      HTTP request make, if you need
      //   }, [])
      
-          return <div>Home page
+          return <div>
+                   <h1>Trending today</h1>
                    <TrendingList />
                  </div>
      };

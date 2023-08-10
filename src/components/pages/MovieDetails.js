@@ -1,18 +1,17 @@
-import {Link, useParams, Outlet} from "react-router-dom";
+import {Link, useParams, Outlet, useLocation} from "react-router-dom";
 
 const MivieDetailes = () =>{
-   const {movieId} = useParams();  
+   const {movieId} = useParams();
+   const location = useLocation(); 
+   const backLink = location.state?.from ?? "/"; 
      
      //   useEffect(() => {
      //      HTTP request make, if you need
      //   }, [])
      
-          return <div>
-                  <button type="button">Go back</button>
+          return <div> <Link to={backLink}>Go back</Link>            
                   <br />
                MovieDetailes: {movieId}
-               {/* <Link to={}>Go back</Link> */}
-          
                    <div> :-) detailes</div>
                     <ul>
                     <h6>Additional information</h6>

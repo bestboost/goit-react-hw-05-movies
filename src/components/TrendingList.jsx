@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Link, useSearchParams} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 const TrendingList = () => {
      const [movies, setMovies] = useState([
@@ -9,18 +9,18 @@ const TrendingList = () => {
           'movie-4',
           'movie-5'
      ]);
+     const location = useLocation();
          //   useEffect(() => {
      //      HTTP request make, if you need
      //   }, [])
      
 
    return  <div>
-              <h1>Trending List</h1>
                <ul>
                  {movies.map( movie => {
                      return(
                          <li key={movie}>
-                              <Link to={`/movies/${movie}`}>{movie}</Link>
+                              <Link to={`/movies/${movie}`} state={{from: location}}>{movie}</Link>
                          </li>
                        )
                  })}
