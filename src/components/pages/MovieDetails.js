@@ -10,7 +10,7 @@ const MivieDetailes = () =>{
           return <div>
                   <button type="button">Go back</button>
                   <br />
-               MovieDetailes:{movieId}
+               MovieDetailes: {movieId}
                {/* <Link to={}>Go back</Link> */}
           
                    <div> :-) detailes</div>

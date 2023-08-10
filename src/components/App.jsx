@@ -7,7 +7,9 @@ import Cast from './Cast';
 import Reviews from './Reviews';
 
 const StyledLink = styled(NavLink)`
+  display: flex;
   color: black;
+  
   &.active {
     color: orange;
   }
@@ -16,13 +18,11 @@ const StyledLink = styled(NavLink)`
 const App = () => {
   return (
     <div
-      style={{ margin: 20, fontSize: 40, color: '#010101'}}
+      style={{ margin: 20, fontSize: 30, color: '#010101'}}
     > 
-       <nav>
+       <nav style={{display: 'flex'}}>
         <StyledLink to="/">Home</StyledLink>
-        <br/>
         <StyledLink to="/movies">Movies</StyledLink>
-        <StyledLink to="/movies/:movieId">MovieDetailes</StyledLink>
        </nav>
 
       <Routes>
