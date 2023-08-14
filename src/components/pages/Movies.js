@@ -1,40 +1,52 @@
 import { useState, useEffect} from "react";
 import { useSearchParams, Link } from "react-router-dom";
 
-const Movies = (state) =>{
-  const [movies, setMovies] = useState([]);
+const Movies = () =>{
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query' ?? '');
-  
-       useEffect(() => {
-     //      HTTP request make, if you need
- 
-    }, [query])
-    //  const updateQueryString = evt => {
-    //   const movieIdValue = evt.target.value;
-    //     if(movieIdValue === '') {
-    //       return setSearchParams({})
-    //     }
-    //     setSearchParams({movieId: movieIdValue});
-    //  };
-       
-    const handlesubmit = e => {
+  const query = searchParams.get('query' || ''); 
+  const [titles, setTitles] = useState([]);
+  const [ids, setIds] = useState([]);
+           
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMDk2NDE3YzZmNTdkYmE2NjM3Yjg5ZTA1MTlkZjhjMCIsInN1YiI6IjY0ZDQ5NmNiYmYzMWYyMDFjZTY3NTk4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oUfYFt39LV0c4K3VhOIRVjLifgRGqlfBdeSL9BhgEbU'
+      }
+    };
+    if(query === ''){
+      return;
+    }
+    
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`, options)
+      .then(response => response.json())
+      .then(response => response.results.map(result => result.title || result.name))
+      .then(setTitles)
+      .catch(err => console.error(err));
+      
+    }, [query, setSearchParams])
+
+    const handleSubmit = e => {
       e.preventDefault();
       const movieIdValue = e.currentTarget;
+      if(movieIdValue === '') {
+        return setSearchParams({})
+      }
       setSearchParams({query: movieIdValue.elements.query.value});
       movieIdValue.reset();
     };  
 
           return <div>
-                  <form onSubmit={handlesubmit}>
+                  <form onSubmit={handleSubmit}>
                     <input type="text" name="query"/>
                     <button type="submit">search</button>
                   </form>
-                  {movies && <ul>
-                    {movies.map( movie => {
+                  {titles && <ul>
+                    {titles.map( title => {
                      return(
-                         <li key={movie}>
-                              <Link to={`/movies/${movie}`}>{movie}</Link>
+                         <li key={title}>
+                              <Link to={`/movies/${title}`}>{title}</Link>
                          </li>
                        )
                  })}
