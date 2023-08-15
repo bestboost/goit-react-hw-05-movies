@@ -19,10 +19,10 @@ const MovieDetailes = () =>{
      fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
        .then(response => response.json())
        .then(response => response.results)
-       .then(setResults)
+     //   .setResults()
        .catch(err => console.error(err));
 }, [])
-     
+
 return <div> <Link to={backLink}>Go back</Link>            
                <br />
           MovieDetailes: {movieId}
