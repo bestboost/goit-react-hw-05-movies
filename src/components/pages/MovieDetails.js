@@ -5,7 +5,7 @@ const MovieDetailes = () =>{
    const {movieId} = useParams();
    const location = useLocation(); 
    const backLink = location.state?.from ?? "/"; 
-   const [results, setResults] = useState();
+//    const [results, setResults] = useState();
 
    useEffect(() => {
      const options = {

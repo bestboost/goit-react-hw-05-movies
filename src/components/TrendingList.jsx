@@ -16,21 +16,18 @@ const TrendingList = () => {
        }, [])
 
        const movieItems = (results) => {
-         setTitle(results.map(result => result.title))
-         setId(results.map(result => result.id))
+            setTitle(results.map(result => result.title))
+            setId(results.map(result => result.id))
         }
-    
    return  <div>
               <ul>
-                 {/* {({title, id}) => { */}
-                     
+                 {title.map((title, id) =>          
                          <li key={id}>
                               <Link to={`/movies/${title}`} 
                                     state={{from: location}}>
                                 {title}</Link>
-                         </li>
-                       
-                 {/* }} */}
+                         </li>                       
+                   )}
                </ul>
            </div>
 };
