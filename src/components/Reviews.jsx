@@ -6,7 +6,8 @@ const Reviews = () => {
 //      HTTP request make, if you need
 //   }, [])
 
-  return <div>Reviews: {movieId}
+  return <div>Reviews: 
+     {movieId}
            <p>reviews</p>
            <ul>
                <li>1</li>
