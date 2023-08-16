@@ -7,7 +7,6 @@ const MoviesList = () => {
      const query = searchParams.get('query' || ''); 
      const [title, setTitle] = useState([]);
      const [id, setId] = useState([]);
-     // const [movies, setMovies] = useState(null);
            
   useEffect(() => {
       searchMoviesAPI
