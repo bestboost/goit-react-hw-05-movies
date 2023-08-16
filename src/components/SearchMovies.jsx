@@ -13,7 +13,6 @@ const SearchMovies = () => {
 
       fetchSearchMoviesAPI
         .fetchSearchMovies(query)
-     
     }, [query])
 
     function handleSubmit(e) {
