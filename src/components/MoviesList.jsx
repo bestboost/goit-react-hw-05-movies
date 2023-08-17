@@ -5,27 +5,21 @@ import searchMoviesAPI from './services/searchMovies-api';
 const MoviesList = () => {
      const [searchParams, setSearchParams] = useSearchParams();
      const query = searchParams.get('query' || ''); 
-     const [title, setTitle] = useState([]);
-     const [id, setId] = useState([]);
+     const[movies, setMovies] = useState([]);
            
   useEffect(() => {
       searchMoviesAPI
       .fetchSearchMovies(query)
         .then(response => response.results)
-        .then(results => movieItems(results))
+        .then(results => setMovies(results))
     }, [query])
-
-    const movieItems = (results) => {
-     setTitle(results.map(result => result.title))
-     setId(results.map(result => result.id))
- };
 
 return <div>
           <ul>
-               {title.map((title, id) => 
-                    <li key={id}>
-                         <Link to={`/movies/${title}`}>
-                         {title}</Link>
+               {movies.map(movie => 
+                    <li key={movie.id}>
+                         <Link to={`/movies/${movie.id}`}>
+                         {movie.title}</Link>
                     </li>                   
                )}
           </ul>
