@@ -1,5 +1,5 @@
-import SearchMovies from '../SearchMovies';
-import MoviesList from '../MoviesList';
+import SearchMovies from '../components/SearchMovies';
+import MoviesList from '../components/MoviesList';
 
 const Movies = () =>{
 

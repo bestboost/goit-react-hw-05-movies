@@ -8,10 +8,12 @@ const MoviesList = () => {
      const[movies, setMovies] = useState([]);
            
   useEffect(() => {
-      searchMoviesAPI
-      .fetchSearchMovies(query)
-        .then(response => response.results)
-        .then(results => setMovies(results))
+    if(query !== null){
+     searchMoviesAPI
+     .fetchSearchMovies(query)
+       .then(response => response.results)
+       .then(results => setMovies(results))
+    }
     }, [query])
 
 return <div>

@@ -1,5 +1,5 @@
 import {Link, Outlet, useLocation, useParams} from "react-router-dom";
-import Info from '../Info';
+import Info from '../components/Info';
 
 const MovieDetailes = () =>{
    const location = useLocation(); 

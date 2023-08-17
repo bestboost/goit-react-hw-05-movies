@@ -1,8 +1,8 @@
 import {Routes, Route, NavLink} from "react-router-dom";
 import styled from "styled-components";
-import Home from './pages/Home';
-import Movies from './pages/Movies';
-import MovieDetailes from './pages/MovieDetails';
+import Home from '../pages/Home';
+import Movies from '../pages/Movies';
+import MovieDetailes from '../pages/MovieDetails';
 import Info from './Info';
 import Cast from './Cast';
 import Reviews from './Reviews';
