@@ -4,29 +4,22 @@ import trendingMovieAPI from './services/trendingMovies-api';
 
 const TrendingList = () => {
      const location = useLocation();
-     const [title, setTitle] = useState([]);
-     const [id, setId] = useState([]);
+     const[movies, setMovies] = useState([]);
 
      useEffect(() => {        
         trendingMovieAPI
         .fetchTrendingMovies()
         .then(response => response.results)
-        .then(results => movieItems(results))
+        .then(results => setMovies(results))
        }, []);
 
-
-       const movieItems = (results) => {
-            setTitle(results.map(result => result.title))
-            setId(results.map(result => result.id))
-        };
-        
    return  <div>
               <ul>
-                 {title.map(title =>          
-                      <li key={id}>
-                          <Link to={`/movies/${id}`} 
+                 {movies.map(movie =>          
+                      <li key={movie.id}>
+                          <Link to={`/movies/${movie.id}`} 
                                 state={{from: location}}>
-                            {title}</Link>
+                            {movie.title}</Link>
                       </li>                       
                    )}
                </ul>
