@@ -1,9 +1,10 @@
-import {Link, Outlet, useLocation} from "react-router-dom";
+import {Link, Outlet, useLocation, useParams} from "react-router-dom";
 import Info from '../Info';
 
 const MovieDetailes = () =>{
    const location = useLocation(); 
    const backLink = location.state?.from ?? "/"; 
+   const {movieId} = useParams();
 
 return <div> <Link to={backLink}>Go back</Link>            
                <div> 

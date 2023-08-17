@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import MovieDetailes from './pages/MovieDetails';
+import Info from './Info';
 import Cast from './Cast';
 import Reviews from './Reviews';
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/" element={<Home />}/>
         <Route path="/movies" element={<Movies />}/>
         <Route path="/movies/:movieId" element={<MovieDetailes />}>
+        <Route path="info" element={<Info />} />
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>

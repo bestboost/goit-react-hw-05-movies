@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
-import {useParams} from "react-router-dom";
+// import {useParams} from "react-router-dom";
 
 const Info = () =>{
-   const {movieId} = useParams();
+ 
 
-   useEffect(() => {
+//    useEffect(() => {
 
 
 
-}, [movieId])
+// }, [])
+
+// const getProductById = (productId) => {
+//      return products.find((product) => product.id === productId);
+//    };
 
 return <div> 
           {/* <img alt="card">:)</img> */}
-          <h1>{movieId}<span> (year)</span></h1>
+          <h1>название<span> (year)</span></h1>
               <p>User score: 00%</p>
           <h2>Overview</h2>
               <p>loremefesfedsfdasf
