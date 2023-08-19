@@ -7,7 +7,8 @@ const Info = () =>{
     const {movieId} = useParams();
     const {poster_path, original_title, release_date, overview, vote_average, genres} = detailes;
     const base_url = `https://image.tmdb.org/t/p/w500/${poster_path}`
-    const ganre = genres.map(g => g.name + ' ') 
+    const ganre = genres?.map(g => g.name + ' ') 
+
    
     useEffect(() => {
         fetchMovieDetailsAPI
