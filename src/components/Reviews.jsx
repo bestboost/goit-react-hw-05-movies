@@ -1,17 +1,26 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import fetchReviewsAPI from './services/reviews-api';
 
 const Reviews = () => {
+     const [reviews, setReviews] = useState([]);
      const {movieId} = useParams();
-          //   useEffect(() => {
-//      HTTP request make, if you need
-//   }, [])
 
-  return <div>Reviews: 
-     {movieId}
-           <p>reviews</p>
+       useEffect(() => {
+          fetchReviewsAPI
+           .fetchReviews(movieId)
+           .then(response => response.results)
+           .then(setReviews)
+  }, [movieId])
+
+  return <div>
            <ul>
-               <li>1</li>
-               <li>2</li>
+             {reviews.map(rev =>
+               <li key={rev.id}>
+                   author: {rev.author} <br/>
+                   {rev.content}
+               </li>
+               )}
           </ul>
         </div>
 };

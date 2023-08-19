@@ -6,18 +6,24 @@ const Cast = () => {
      const [cast, setCast] = useState([]);
      const {movieId} = useParams();
          
-//        useEffect(() => {
-//           fetchCastAPI
-//           .fetchCast(movieId)
-//           .then(response => console.log(response))
-      
-//   }, [movieId])
+       useEffect(() => {
+          fetchCastAPI
+          .fetchCast(movieId)
+          .then(response => response.cast)
+          .then(setCast)
+        
+  }, [movieId])
 
-  return <div>Cast: {movieId}
-          <ul>
-               <li>1</li>
-               <li>2</li>
-          </ul>
+  return <div>
+               <ul>
+                    {cast.map(c => 
+                         <li key={c.id}>
+                              <img src={c.poster_path} alt="actor"/> <br />
+                              {c.name} <br/>
+                              character: {c.character}
+                         </li> 
+                         )}          
+               </ul>
          </div>
 };
 

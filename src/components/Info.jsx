@@ -13,11 +13,9 @@ const Info = () =>{
          .then(response => setDetailes(response))
       }, [movieId])
   
-// const getProductById = (productId) => {
-//      return products.find((product) => product.id === productId);
-//    };
-const {poster_path, original_title, release_date, overview, vote_average, genres} = detailes;
 
+const {poster_path, original_title, release_date, overview, vote_average, genres} = detailes;
+console.log("Info  detailes:", detailes)
 
 return <div> 
           <img src={poster_path} alt="card"/>
@@ -27,7 +25,7 @@ return <div>
               <p>{overview}</p>
           <h2>Genres</h2>
           {/* {genres.map(genre =>
-              <p>{Object.values(genre.name)}</p>
+              <p>{Object.values(genre)}</p>
               )} */}
       </div>
 };

@@ -1,4 +1,4 @@
-function fetchCast(movieId) {
+function fetchReviews(movieId) {
      const options = {
           method: 'GET',
           headers: {
@@ -7,18 +7,18 @@ function fetchCast(movieId) {
           }
         };
         
-     return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`, options)
-          .then(response => {
-          if(response.ok) {
-               return response.json()
-          }
-     return Promise.reject(
-          new Error(`Something go wrong, please try again`))
-     }) 
+     return fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`, options)
+          .then(response =>  {
+               if(response.ok) {
+                    return response.json()
+               }
+          return Promise.reject(
+               new Error(`We don't have reviews for this movie`))
+          }) 
 };
 
-const api = {
-     fetchCast,
-}; 
+const api ={
+     fetchReviews,
+};
 
 export default api;
