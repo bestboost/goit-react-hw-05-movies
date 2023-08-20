@@ -5,6 +5,7 @@ import fetchCastAPI from './services/cast-api';
 const Cast = () => {
      const [cast, setCast] = useState([]);
      const {movieId} = useParams();
+     const base_url = 'https://image.tmdb.org/t/p/w500'
          
        useEffect(() => {
           fetchCastAPI
@@ -13,18 +14,12 @@ const Cast = () => {
           .then(setCast)
         
   }, [movieId])
-// const {profile_path} = cast
-// console.log("Cast  profile_path:", cast.profile_path)
-// const profilePhoto = cast.map(cast => cast.profile_path)
-// console.log("Cast  profilePhoto:", profilePhoto)
-// const base_url = `https://image.tmdb.org/t/p/w500/${profilePhoto}`
-   
-//    console.log("Cast  base_url:", base_url)
+
    return <div>
               <ul>
                  {cast.map(c => 
                     <li key={c.id}>
-                         <img src="" alt="actor"/> <br />
+                        <img src={base_url + c.profile_path} alt="actor"/> <br />
                          {c.name} <br/>
                          character: {c.character}
                     </li> 
