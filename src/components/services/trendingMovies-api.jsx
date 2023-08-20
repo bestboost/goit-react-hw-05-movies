@@ -13,7 +13,7 @@ function fetchTrendingMovies() {
                     return response.json()
                }
           return Promise.reject(
-               new Error(`Something go wrong, please try again`))
+          `Something go wrong, please try again`)
           })             
 };
 

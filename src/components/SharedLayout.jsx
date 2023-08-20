@@ -1,32 +1,20 @@
 import { Suspense } from "react";
-import { Outlet, NavLink } from "react-router-dom";
-import styled from "styled-components";
+import { Outlet} from "react-router-dom";
+import {StyledLink, Header, Nav} from './sharedLayaut.styled';
 
-const StyledLink = styled(NavLink)`
-  display: flex;
-  color: black;
-  
-  &.active {
-    color: orange;
-  }
-`;
-// const Container = styled('div')`
-// `;
-const Header = styled('div')`
-`;
 const SharedLayout = () => {
   return (
-     <div>
-      <Header style={{ margin: 20, fontSize: 30, color: '#010101'}}>
-          <nav style={{display: 'flex'}}>
+     <section>
+      <Header >
+          <Nav >
             <StyledLink to="/">Home</StyledLink>
             <StyledLink to="/movies">Movies</StyledLink>
-          </nav>         
+          </Nav>         
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
       </Header>
-      </div>
+      </section>
 )};
 
 export default SharedLayout;

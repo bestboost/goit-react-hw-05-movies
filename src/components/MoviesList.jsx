@@ -16,7 +16,7 @@ const MoviesList = () => {
     }
     }, [query])
 
-return <div>
+return <section>
           <ul>
                {movies.map(movie => 
                     <li key={movie.id}>
@@ -25,7 +25,7 @@ return <div>
                     </li>                   
                )}
           </ul>
-     </div>
+     </section>
 
 }
 

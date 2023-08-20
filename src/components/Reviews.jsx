@@ -13,7 +13,7 @@ const Reviews = () => {
            .then(setReviews)
   }, [movieId])
 
-  return <div>
+  return <section>
            <ul>
              {reviews.map(rev =>
                <li key={rev.id}>
@@ -22,7 +22,7 @@ const Reviews = () => {
                </li>
                )}
           </ul>
-        </div>
+        </section>
 };
 
 export default Reviews;

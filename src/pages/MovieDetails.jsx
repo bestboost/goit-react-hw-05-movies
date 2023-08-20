@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import Info from '../components/Info';
 
@@ -5,7 +6,7 @@ const MovieDetailes = () =>{
    const location = useLocation(); 
    const backLink = location.state?.from ?? "/";
 
-return <div> <Link to={backLink}>Go back</Link>            
+return <main> <Link to={backLink}>Go back</Link>            
                <div> 
                   <Info />
                </div>
@@ -18,8 +19,10 @@ return <div> <Link to={backLink}>Go back</Link>
                          <Link to={"reviews"}>Reviews</Link>
                     </li>
                </ul>
-           <Outlet />
-        </div>
+               <Suspense fallback={<div>Loading...</div>}>
+                  <Outlet />
+               </Suspense>
+        </main>
      };
      
 export default MovieDetailes;

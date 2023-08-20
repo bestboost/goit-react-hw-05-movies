@@ -15,7 +15,7 @@ const Cast = () => {
         
   }, [movieId])
 
-   return <div>
+   return <section>
               <ul>
                  {cast.map(c => 
                     <li key={c.id}>
@@ -25,7 +25,7 @@ const Cast = () => {
                     </li> 
                     )}          
                </ul>
-         </div>
+         </section>
 };
 
 export default Cast;

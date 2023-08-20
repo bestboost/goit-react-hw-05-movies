@@ -3,10 +3,10 @@ import MoviesList from '../components/MoviesList';
 
 const Movies = () =>{
 
-    return <div>
+    return <main>
               <SearchMovies />
               <MoviesList />
-            </div>
+            </main>
      };
      
 export default Movies;

@@ -5,25 +5,29 @@ import trendingMovieAPI from './services/trendingMovies-api';
 const TrendingList = () => {
      const location = useLocation();
      const[movies, setMovies] = useState([]);
+     const[error, setError] = useState(null);
 
      useEffect(() => {        
         trendingMovieAPI
         .fetchTrendingMovies()
         .then(response => response.results)
         .then(results => setMovies(results))
+        .catch(error => setError(error));
        }, []);
 
-   return  <div>
-              <ul>
+   return  <section>  
+               <h2>Trending today</h2>
+              {error !== null ? <p>{error}</p>
+              : <ul>            
                  {movies.map(movie =>          
                       <li key={movie.id}>
                           <Link to={`/movies/${movie.id}`} 
                                 state={{from: location}}>
                             {movie.title}</Link>
                       </li>                       
-                   )}
-               </ul>
-           </div>
+                   )}          
+               </ul>}
+           </section>
 };
 
 export default TrendingList;

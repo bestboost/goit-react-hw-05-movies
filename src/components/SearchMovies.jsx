@@ -1,11 +1,11 @@
-import {useEffect} from "react";
+import {useState, useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 import fetchSearchMoviesAPI from './services/searchMovies-api';
 
 const SearchMovies = () => {
      const [searchParams, setSearchParams] = useSearchParams();
      const query = searchParams.get('query' || ''); 
-           
+
   useEffect(() => {
       if(!query) {
         return;
@@ -29,12 +29,12 @@ const SearchMovies = () => {
   } 
 
 return (
-     <div>
+     <section>
           <form onSubmit={handleSubmit}>
-          <input type="text" name="query"/>
-          <button type="submit">search</button>
+            <input type="text" name="query"/>
+            <button type="submit">search</button>
           </form>
-     </div>
+     </section>
   )
 }
 
