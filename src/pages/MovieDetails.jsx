@@ -1,17 +1,20 @@
 import { Suspense } from "react";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import Info from '../components/Info';
+import {Box, GoBackButton} from '../components/movieDetailes.styled';
 
 const MovieDetailes = () =>{
    const location = useLocation(); 
    const backLink = location.state?.from ?? "/";
 
-return <main> <Link to={backLink}>Go back</Link>            
+return <Box > 
+         <Link to={backLink}>
+            <GoBackButton> Go back</GoBackButton></Link>            
                <div> 
                   <Info />
                </div>
                <ul>
-                  <h6>Additional information</h6>
+                  <h4>Additional information</h4>
                     <li>
                          <Link to={"cast"}>Cast</Link>
                     </li>
@@ -22,7 +25,7 @@ return <main> <Link to={backLink}>Go back</Link>
                <Suspense fallback={<div>Loading...</div>}>
                   <Outlet />
                </Suspense>
-        </main>
+        </Box >
      };
      
 export default MovieDetailes;

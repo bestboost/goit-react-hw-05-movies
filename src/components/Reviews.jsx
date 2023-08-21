@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import fetchReviewsAPI from './services/reviews-api';
+import {Author} from './reviews.styled';
 
 const Reviews = () => {
      const [reviews, setReviews] = useState([]);
@@ -17,7 +18,7 @@ const Reviews = () => {
            <ul>
              {reviews.map(rev =>
                <li key={rev.id}>
-                   author: {rev.author} <br/>
+                   <Author>Author: {rev.author} </Author> 
                    {rev.content}
                </li>
                )}

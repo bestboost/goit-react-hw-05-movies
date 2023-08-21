@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import fetchMovieDetailsAPI from './services/movieDetailes-api';
-import {InfoSection, Description} from './info.styled';
+import {InfoSection, Description, Image} from './info.styled';
 
 const Info = () =>{
     const [detailes, setDetailes] = useState([]);
@@ -18,7 +18,7 @@ const Info = () =>{
       }, [movieId])
   
 return <InfoSection> 
-          <img src={base_url + poster_path} alt="card"/>
+          <Image src={base_url + poster_path} alt="card"/>
           <Description>
             <h2>{original_title}<span> ({release_date})</span></h2>
                 <p>User score: {Math.trunc(vote_average * 10)}%</p>

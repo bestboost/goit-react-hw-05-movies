@@ -1,6 +1,7 @@
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 import fetchSearchMoviesAPI from './services/searchMovies-api';
+import {Form, Button, Input} from './searchMovies.styled';
 
 const SearchMovies = () => {
      const [searchParams, setSearchParams] = useSearchParams();
@@ -30,10 +31,10 @@ const SearchMovies = () => {
 
 return (
      <section>
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="query"/>
-            <button type="submit">search</button>
-          </form>
+          <Form onSubmit={handleSubmit}>
+            <Input type="text" name="query"/>
+            <Button type="submit">Search</Button>
+          </Form>
      </section>
   )
 }
