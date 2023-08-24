@@ -5,15 +5,16 @@ import {List} from './cast.styled';
 
 const Cast = () => {
      const [cast, setCast] = useState([]);
-     const {movieId} = useParams();
+     const { movieId } = useParams();
+     const[error, setError] = useState(null);
      const base_url = 'https://image.tmdb.org/t/p/w200'
          
        useEffect(() => {
           fetchCastAPI
           .fetchCast(movieId)
           .then(response => response.cast)
-          .then(setCast)
-        
+             .then(setCast)
+             .catch(error => setError(error));
   }, [movieId])
 
    return <section>

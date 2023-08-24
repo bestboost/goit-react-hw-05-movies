@@ -4,26 +4,29 @@ import fetchReviewsAPI from './services/reviews-api';
 import {Author} from './reviews.styled';
 
 const Reviews = () => {
-     const [reviews, setReviews] = useState([]);
-     const {movieId} = useParams();
+  const [reviews, setReviews] = useState([]);
+  const[error, setError] = useState(null);
+  const {movieId} = useParams();
 
        useEffect(() => {
           fetchReviewsAPI
            .fetchReviews(movieId)
            .then(response => response.results)
            .then(setReviews)
-  }, [movieId])
-
+           .catch(error => setError(error));
+       }, [movieId])
+ 
   return <section>
-           <ul>
+             <ul>
              {reviews.map(rev =>
                <li key={rev.id}>
                    <Author>Author: {rev.author} </Author> 
-                   {rev.content}
+                 {rev.content}
+                 {error && <h1>{error}</h1>}
                </li>
                )}
           </ul>
-        </section>
+  </section>
 };
 
 export default Reviews;

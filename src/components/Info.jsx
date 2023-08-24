@@ -5,8 +5,9 @@ import {InfoSection, Description, Image} from './info.styled';
 
 const Info = () =>{
     const [detailes, setDetailes] = useState([]);
-    const {movieId} = useParams();
+    const[error, setError] = useState(null);
     const {poster_path, original_title, release_date, overview, vote_average, genres} = detailes;
+    const { movieId } = useParams();
     const base_url = `https://image.tmdb.org/t/p/w200`
     const ganre = genres?.map(g => g.name + ' ') 
     // 'https://api.themoviedb.org/3/movie/movie_id/images'
@@ -14,13 +15,14 @@ const Info = () =>{
     useEffect(() => {
         fetchMovieDetailsAPI
        .fetchMovieDetails(movieId)
-         .then(response => setDetailes(response))
+        .then(response => setDetailes(response))
+        .catch(error => setError(error));
       }, [movieId])
-  
-return <InfoSection> 
+
+    return <InfoSection> 
           <Image src={base_url + poster_path} alt="card"/>
           <Description>
-            <h2>{original_title}<span> ({release_date})</span></h2>
+            <h2>{original_title} ({release_date})</h2>
                 <p>User score: {Math.trunc(vote_average * 10)}%</p>
             <h3>Overview</h3>
                 <p>{overview}</p>

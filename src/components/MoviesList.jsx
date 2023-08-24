@@ -5,7 +5,8 @@ import searchMoviesAPI from './services/searchMovies-api';
 const MoviesList = () => {
      const [searchParams, setSearchParams] = useSearchParams();
      const query = searchParams.get('query' || ''); 
-     const[movies, setMovies] = useState([]);
+     const [movies, setMovies] = useState([]);
+     const[error, setError] = useState(null);
            
   useEffect(() => {
     if(query !== null){
@@ -13,6 +14,7 @@ const MoviesList = () => {
      .fetchSearchMovies(query)
        .then(response => response.results)
        .then(results => setMovies(results))
+       .catch(error => setError(error));
     }
     }, [query])
 

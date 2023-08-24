@@ -1,10 +1,11 @@
-import {useEffect} from "react";
+import {useState, useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 import fetchSearchMoviesAPI from './services/searchMovies-api';
 import {Form, Button, Input} from './searchMovies.styled';
 
 const SearchMovies = () => {
      const [searchParams, setSearchParams] = useSearchParams();
+     const[error, setError] = useState(null);
      const query = searchParams.get('query' || ''); 
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const SearchMovies = () => {
 
       fetchSearchMoviesAPI
         .fetchSearchMovies(query)
+        .catch(error => setError(error));
     }, [query])
 
     function handleSubmit(e) {

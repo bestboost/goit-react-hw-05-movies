@@ -8,7 +8,7 @@ function fetchReviews(movieId) {
         };
         
      return fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`, options)
-          .then(response =>  {
+          .then(response => {
                if(response.ok) {
                     return response.json()
                }
