@@ -24,10 +24,11 @@ const Reviews = () => {
           <li key={rev.id}>
             <Author>Author: {rev.author} </Author>
             {rev.content}
-            {error && <h1>{error}</h1>}
           </li>
         ))}
       </ul>
+      {reviews.length === 0 && <p>We don't have reviews for this movie</p>}
+      {error && <h1>{error}</h1>}
     </section>
   );
 };

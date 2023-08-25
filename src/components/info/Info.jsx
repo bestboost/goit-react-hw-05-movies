@@ -17,7 +17,6 @@ const Info = () => {
     vote_average,
     genres,
   } = detailes;
-  const ganre = genres?.map(g => g.name + ' ');
 
   useEffect(() => {
     fetchMovieDetailsAPI
@@ -37,7 +36,7 @@ const Info = () => {
         <h3>Overview</h3>
         <p>{overview}</p>
         <h3>Genres</h3>
-        <p>{ganre}</p>
+        <p>{genres?.map(g => g.name + ' ')}</p>
       </Description>
     </InfoSection>
   );
