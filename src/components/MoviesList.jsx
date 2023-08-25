@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import searchMoviesAPI from './services/searchMovies-api';
 import PropTypes from 'prop-types';
 
 const MoviesList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const query = searchParams.get('query' || '');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
@@ -24,7 +25,9 @@ const MoviesList = () => {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
+            </Link>
           </li>
         ))}
       </ul>
