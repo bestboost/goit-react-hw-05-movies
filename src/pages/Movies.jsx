@@ -1,12 +1,13 @@
-import SearchMovies from '../components/SearchMovies';
+import SearchMovies from '../components/searchMovies/SearchMovies';
 import MoviesList from '../components/MoviesList';
 
-const Movies = () =>{
+const Movies = () => {
+  return (
+    <main>
+      <SearchMovies />
+      <MoviesList />
+    </main>
+  );
+};
 
-    return <main>
-              <SearchMovies />
-              <MoviesList />
-            </main>
-     };
-     
 export default Movies;
