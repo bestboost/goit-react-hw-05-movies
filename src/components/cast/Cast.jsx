@@ -20,12 +20,15 @@ const Cast = () => {
 
   return (
     <section>
+      {error && <p>{error}</p>}
       <ul>
         {cast.map(c => (
           <List key={c.id}>
-            <img src={base_url + c.profile_path} alt="actor" /> <br />
-            {c.name} <br />
-            character: {c.character}
+            {c.profile_path && (
+              <img src={base_url + c.profile_path} alt="actor" />
+            )}
+            <p>{c.name}</p>
+            <p>character: {c.character}</p>
           </List>
         ))}
       </ul>

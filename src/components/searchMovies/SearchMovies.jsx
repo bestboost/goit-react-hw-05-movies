@@ -34,10 +34,12 @@ const SearchMovies = () => {
 
   return (
     <section>
+      {error && <p>{error}</p>}
       <Form onSubmit={handleSubmit}>
         <Input type="text" name="query" />
         <Button type="submit">Search</Button>
       </Form>
+      {query === '' && <p>Search bar is empty, please type movie name</p>}
     </section>
   );
 };

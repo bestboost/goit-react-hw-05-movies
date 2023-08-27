@@ -19,16 +19,16 @@ const Reviews = () => {
 
   return (
     <section>
+      {error && <p>{error}</p>}
       <ul>
         {reviews.map(rev => (
           <li key={rev.id}>
             <Author>Author: {rev.author} </Author>
-            {rev.content}
+            <p>{rev.content}</p>
           </li>
         ))}
       </ul>
       {reviews.length === 0 && <p>We don't have reviews for this movie</p>}
-      {error && <h1>{error}</h1>}
     </section>
   );
 };

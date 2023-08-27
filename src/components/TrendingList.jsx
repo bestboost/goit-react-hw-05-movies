@@ -19,19 +19,16 @@ const TrendingList = () => {
   return (
     <section>
       <h2>Trending today</h2>
-      {error !== null ? (
-        <p>{error}</p>
-      ) : (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {error && <p>{error}</p>}
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 };

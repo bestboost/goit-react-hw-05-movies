@@ -22,6 +22,7 @@ const MoviesList = () => {
 
   return (
     <section>
+      {error && <p>{error}</p>}
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>

@@ -27,7 +27,8 @@ const Info = () => {
 
   return (
     <InfoSection>
-      <Image src={base_url + poster_path} alt="card" />
+      {error && <p>{error}</p>}
+      {poster_path && <Image src={base_url + poster_path} alt="card" />}
       <Description>
         <h2>
           {original_title} ({release_date && release_date.slice(0, 4)})
