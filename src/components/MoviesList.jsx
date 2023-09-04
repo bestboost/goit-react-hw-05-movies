@@ -4,7 +4,7 @@ import searchMoviesAPI from './services/searchMovies-api';
 import PropTypes from 'prop-types';
 
 const MoviesList = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const location = useLocation();
   const query = searchParams.get('query' || '');
   const [movies, setMovies] = useState([]);
