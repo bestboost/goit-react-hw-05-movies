@@ -6,7 +6,6 @@ import searchMoviesAPI from '../components/services/movies-api';
 
 const Movies = () => {
   const [searchParams] = useSearchParams();
-  // const location = useLocation();
   const query = searchParams.get('query' || '');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);

@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <main>
       <h2>Trending today</h2>
-      <MoviesList props={(movies, error)} />
+      <MoviesList movies={movies} />
     </main>
   );
 };
