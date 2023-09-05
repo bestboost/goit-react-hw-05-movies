@@ -2,13 +2,28 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import fetchMovieDetailsAPI from '../services/movieDetailes-api';
 import { InfoSection, Description, Image } from './info.styled';
+import pending from '../images/pending.png';
 import PropTypes from 'prop-types';
 
+const defaultImg = pending;
+
 const Info = () => {
-  const [detailes, setDetailes] = useState([]);
+  const [detailes, setDetailes] = useState(null);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
   const base_url = `https://image.tmdb.org/t/p/w200`;
+
+  useEffect(() => {
+    fetchMovieDetailsAPI
+      .fetchMovieDetails(movieId)
+      .then(response => setDetailes(response))
+      .catch(error => setError(error));
+  }, [movieId]);
+
+  if (!detailes) {
+    return;
+  }
+
   const {
     poster_path,
     original_title,
@@ -18,17 +33,13 @@ const Info = () => {
     genres,
   } = detailes;
 
-  useEffect(() => {
-    fetchMovieDetailsAPI
-      .fetchMovieDetails(movieId)
-      .then(response => setDetailes(response))
-      .catch(error => setError(error));
-  }, [movieId, release_date]);
-
   return (
     <InfoSection>
       {error && <p>{error}</p>}
-      {poster_path && <Image src={base_url + poster_path} alt="card" />}
+      <Image
+        src={poster_path ? base_url + poster_path : defaultImg}
+        alt="card"
+      />
       <Description>
         <h2>
           {original_title} ({release_date && release_date.slice(0, 4)})

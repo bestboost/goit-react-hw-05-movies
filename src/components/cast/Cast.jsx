@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import fetchCastAPI from '../services/cast-api';
 import { List } from './cast.styled';
+import pending from '../images/pending.png';
 import PropTypes from 'prop-types';
+
+const defaultImg = pending;
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -22,13 +25,16 @@ const Cast = () => {
     <section>
       {error && <p>{error}</p>}
       <ul>
-        {cast.map(c => (
-          <List key={c.id}>
-            {c.profile_path && (
-              <img src={base_url + c.profile_path} alt="actor" />
-            )}
-            <p>{c.name}</p>
-            <p>character: {c.character}</p>
+        {cast.map(item => (
+          <List key={item.id}>
+            <img
+              src={
+                item.profile_path ? base_url + item.profile_path : defaultImg
+              }
+              alt="actor"
+            />
+            <p>{item.name}</p>
+            <p>character: {item.character}</p>
           </List>
         ))}
       </ul>

@@ -14,8 +14,7 @@ const MoviesList = () => {
     if (query !== null) {
       searchMoviesAPI
         .fetchSearchMovies(query)
-        .then(response => response.results)
-        .then(results => setMovies(results))
+        .then(({ results }) => setMovies(results))
         .catch(error => setError(error));
     }
   }, [query]);
