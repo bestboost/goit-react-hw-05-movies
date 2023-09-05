@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import fetchCastAPI from '../services/cast-api';
+import fetchCastAPI from '../services/movies-api';
 import { List } from './cast.styled';
 import pending from '../images/pending.png';
 import PropTypes from 'prop-types';
@@ -16,8 +16,8 @@ const Cast = () => {
   useEffect(() => {
     fetchCastAPI
       .fetchCast(movieId)
-      .then(response => response.cast)
-      .then(setCast)
+      // .then(response => response.cast)
+      .then(({ cast }) => setCast(cast))
       .catch(error => setError(error));
   }, [movieId]);
 

@@ -1,10 +1,24 @@
-import TrendingList from "components/TrendingList";
+import MoviesList from 'components/MoviesList';
+import { useState, useEffect } from 'react';
+import trendingMovieAPI from '../components/services/movies-api';
 
-const Home = () =>{
+const Home = () => {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
 
-          return <main>
-                   <TrendingList/>
-                 </main>
-     };
-     
+  useEffect(() => {
+    trendingMovieAPI
+      .fetchTrendingMovies()
+      .then(({ results }) => setMovies(results))
+      .catch(error => setError(error));
+  }, [setMovies]);
+
+  return (
+    <main>
+      <h2>Trending today</h2>
+      <MoviesList props={(movies, error)} />
+    </main>
+  );
+};
+
 export default Home;

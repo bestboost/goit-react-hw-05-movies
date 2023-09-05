@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import fetchSearchMoviesAPI from '../services/searchMovies-api';
+// import fetchSearchMoviesAPI from '../services/searchMovies-api';
 import { Form, Button, Input } from './searchMovies.styled';
 import PropTypes from 'prop-types';
 
 const SearchMovies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const query = searchParams.get('query' || '');
 
-  useEffect(() => {
-    if (!query) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (!query) {
+  //     return;
+  //   }
 
-    fetchSearchMoviesAPI
-      .fetchSearchMovies(query)
-      .catch(error => setError(error));
-  }, [query]);
+  //   fetchSearchMoviesAPI
+  //     .fetchSearchMovies(query)
+  //     .catch(error => setError(error));
+  // }, [query]);
 
   function handleSubmit(e) {
     e.preventDefault();

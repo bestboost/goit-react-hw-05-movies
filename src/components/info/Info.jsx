@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import fetchMovieDetailsAPI from '../services/movieDetailes-api';
+import fetchMovieDetailsAPI from '../services/movies-api';
 import { InfoSection, Description, Image } from './info.styled';
 import pending from '../images/pending.png';
 import PropTypes from 'prop-types';

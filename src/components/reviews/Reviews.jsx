@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import fetchReviewsAPI from '../services/reviews-api';
+import fetchReviewsAPI from '../services/movies-api';
 import { Author } from './reviews.styled';
 import PropTypes from 'prop-types';
 
@@ -12,8 +12,7 @@ const Reviews = () => {
   useEffect(() => {
     fetchReviewsAPI
       .fetchReviews(movieId)
-      .then(response => response.results)
-      .then(setReviews)
+      .then(({ results }) => setReviews(results))
       .catch(error => setError(error));
   }, [movieId]);
 

@@ -1,23 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
-import searchMoviesAPI from './services/searchMovies-api';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const MoviesList = () => {
-  const [searchParams] = useSearchParams();
+const MoviesList = ({ movies, error }) => {
   const location = useLocation();
-  const query = searchParams.get('query' || '');
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    if (query !== null) {
-      searchMoviesAPI
-        .fetchSearchMovies(query)
-        .then(({ results }) => setMovies(results))
-        .catch(error => setError(error));
-    }
-  }, [query]);
 
   return (
     <section>
