@@ -26,7 +26,7 @@ const Movies = () => {
   return (
     <main>
       <SearchMovies />
-      <MoviesList movies={movies} />
+      <MoviesList movies={movies} error={error} />
     </main>
   );
 };
